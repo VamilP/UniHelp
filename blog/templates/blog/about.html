@@ -1,0 +1,400 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
+
+    {% if title %}
+    <title>UniHelp - {{ title }}</title>
+    {% else %}
+    <title>UniHelp</title>
+    {% endif %}
+
+    <style>
+        .btn-primary.custom-btn {
+            background-color: #000;
+            border-color: #000;
+        }
+
+        body {
+            background-color: beige;
+        }
+
+        h1 {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            font-family: 'Foldit', cursive;
+            font-family: 'Mukta', sans-serif;
+        }
+
+        #about {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .columns {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+            margin: 5px 0;
+        }
+
+        .column {
+            flex: 1;
+            border: 2px solid black;
+            margin: 2px;
+            padding: 8px;
+            /* background: lightgoldenrodyellow; */
+        }
+
+        .columns h2 {
+            padding: 0 140px;
+        }
+
+        .container4 {
+            position: relative;
+            width: 1100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 30px;
+            margin-top: 8%;
+
+        }
+
+        .image {
+            float: left;
+            width: 219px;
+            margin-bottom: 40px;
+            padding: 35px 42px;
+        }
+
+
+
+        /* Add some shadows to create a card effect */
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        /* Some left and right padding inside the container */
+        .containers {
+            padding: 0 16px;
+        }
+
+        /* Clear floats */
+        .containers::after,
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .title {
+            color: grey;
+        }
+
+        .row {
+            padding: 30px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .team {
+
+            align-items: center;
+            justify-content: center;
+        }
+
+        footer {
+            position: relative;
+            width: 100%;
+            background: #679ceb;
+            /* min-height: 100px; */
+            padding: 20px 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        footer .social_icon,
+        footer .menu {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0;
+            flex-wrap: wrap;
+        }
+
+        footer .social_icon li,
+        footer .menu li {
+            list-style: none;
+
+        }
+
+        footer .social_icon li a,
+        footer .menu li a {
+            font-size: 2rem;
+            color: black;
+            margin: 0 10px;
+            display: inline-block;
+            transition: 0.5sec;
+            text-decoration: none;
+        }
+
+        footer .social_icon li a :hover {
+            transform: translate(-10px);
+        }
+
+        footer .menu li a {
+            font-size: 1.3rem;
+            color: black;
+            margin: 0 10px;
+            display: inline-block;
+            transition: 0.5sec;
+            text-decoration: none;
+            opacity: 0.75;
+
+        }
+
+        footer .menu li a :hover {
+            opacity: 1;
+
+        }
+
+        footer p {
+            color: black;
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+
+        }
+
+        .paragraph p {
+            font-size: large;
+        }
+
+        .title {
+            color: black;
+        }
+
+        .row {
+            width: 1500px;
+            margin: auto;
+            flex-wrap: wrap;
+            display: flex;
+            /* border: 1px solid black; */
+            justify-content: space-around;
+        }
+
+        .card {
+            flex-basis: 25%;
+            margin: 10px 10px;
+            box-shadow: 0px 0px 10px 3px lightgray;
+            text-align: center;
+        }
+
+        @media(min-width:200px) and (max-width:900px) {
+            .row {
+                display: flex;
+                width: 50%;
+                flex-direction: column;
+
+            }
+
+            .container p {
+
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand mr-4" href="{% url 'solutionFinder' %}">UniHelp</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+                    aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarToggle">
+                    <div class="navbar-nav mr-auto">
+                        <a class="nav-item nav-link" href="{% url 'blog-home' %}">Dashboard</a>
+                        <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
+                        <a class="nav-item nav-link" href="{% url 'contact-form' %}">Contact</a>
+                        <a class="nav-item nav-link" href="{% url 'event' %}">Event</a>
+                        <a class="nav-item nav-link" href="{% url 'resource' %}">Resource</a>
+                    </div>
+                    <!-- Navbar Right Side -->
+                    <div class="navbar-nav">
+                        {% if user.is_authenticated and user.profile.role == 'Alumni' %}
+                        <a class="nav-item nav-link nav-hover" href="{% url 'post-create' %}">New Post</a>
+                        <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+                        <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                        {% elif user.is_authenticated and user.profile.role == 'Student' %}
+                        <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+                        <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                        {% else %}
+                        <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                        <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-8">
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% block content %}{% endblock %}
+            </div>
+            <div class="col-md-4">
+                {% block palate %}{% endblock %}
+            </div>
+        </div>
+
+
+        <div>
+            <center>
+                <h1>ABOUT US</h1>
+            </center>
+        </div>
+
+        <div class="paragraph">
+            <div class="container">
+                <p>
+                    A job search webpage is an online platform designed to assist individuals in finding suitable
+                    employment opportunities. These websites serve as a centralized hub where job seekers can explore a
+                    wide range of job listings, filter them based on their preferences and qualifications, and apply
+                    directly to the desired positions. These platforms often provide advanced search features, allowing
+                    users to narrow down their search by industry, location, experience level, or specific keywords.
+                    Additionally, job search webpages may offer various tools and resources to enhance the job hunting
+                    process, such as resume builders, interview tips, and career advice articles. With their
+                    user-friendly interfaces and comprehensive databases, these websites streamline the job search
+                    process, connecting job seekers with prospective employers and increasing the likelihood of finding
+                    a rewarding and fulfilling career opportunity.</p>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <h2>Our Mission</h2>
+                    <p>To empower people and specially under represented groups by educating them on technology and
+                        related necessary skills.</p>
+
+                    <p> To create local opportunity, growth and impact via tech education in every country around the
+                        world and to bring diversity in tech domain.</p>
+                </div>
+                <div class="column">
+                    <h2>What We Value</h2>
+                    <p>An online job search opens the door to possibilities that simply don’t exist when you don’t go
+                        digital. It is guaranteed that someone will Google your name, and if you don’t show up in the
+                        search, you may get passed over for a candidate who has a strong online job search presence.</p>
+
+
+                </div>
+                <div class="column">
+                    <h2>Facts</h2>
+                    <p>Are you struggling with job regret? Perhaps you took took a position because it seemed like an
+                        excellent fit or offered a higher salary or better benefits. Now, six months later, you realize
+                        you made the wrong decision. But conventional wisdom says you need to stick it out.</p>
+
+
+                </div>
+            </div>
+
+            <div class="team">
+                <h1>Our Team</h1>
+                <p>
+                    Our team member's hard work is truly commendable, as they consistently demonstrate unwavering
+                    dedication, perseverance, and an unparalleled work ethic, going above and beyond expectations to
+                    achieve exceptional results, tackle challenges head-on, and contribute significantly to the overall
+                    success of our team and organization.</p>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="column">
+                <div class="card">
+                    <img src="{% static 'anand1.jpg'%}" alt="Jane" style="width:100%">
+                    <div class="containers">
+                        <h2>Anand Raj</h2>
+                        <p class="title">CEO &amp; Founder</p>
+                        <p>
+                            "Success is not the key to happiness. Happiness is the key."</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <img src="{% static 'vamil1.jpg'%}" alt="Mike" style="width:100%">
+                    <div class="containers">
+                        <h2>Vamil</h2>
+                        <p class="title">Art Director</p>
+                        <p>
+                            "Transform ideas into captivating visual masterpieces."</p>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <img src="{% static 'chandu1.jpg'%}" alt="John" style="width:100%">
+                    <div class="containers">
+                        <h2>Chandrashekar</h2>
+                        <p class="title">Designer</p>
+                        <p>"Crafting innovation through beautiful and functional designs."</p>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card">
+                    <img src="{% static 'sid.jpg' %}" alt="John" style="width:100%">
+                    <div class="containers">
+                        <h2>Siddharth</h2>
+                        <p class="title">Backend Developer</p>
+                        <p>
+                            "Architecting robust systems with efficient code."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Foldit&family=Mukta:wght@200&display=swap');
+        </style>
+    </main>
